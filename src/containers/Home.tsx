@@ -7,7 +7,7 @@ import {addMessages} from '../store/actions/messages.actions';
 
 interface Props {}
 
-export const Home: React.FC<Props> = _ => {
+export const HomeScreen: React.FC<Props> = _ => {
   const dispatch = useDispatch();
   const {messages} = useSelector((state: RootState) => state.messages);
 
