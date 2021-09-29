@@ -11,6 +11,5 @@ async function addMessages(start: number): Promise<MessageInterface[]> {
 }
 
 async function readMessage(messageId: string): Promise<MessageInterface[]> {
-  // return await getFromServer('/api/');
   return [];
 }

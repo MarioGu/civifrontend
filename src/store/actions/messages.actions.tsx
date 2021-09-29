@@ -30,13 +30,13 @@ export const failure: ActionCreator<FetchActionTypes> = (error: any) => {
 };
 
 export function addMessages(start: number) {
-  return dispatch => {
+  return (dispatch: (arg0: MessagesActionTypes | FetchActionTypes) => void) => {
     dispatch(request());
     return messagesService.addMessages(start).then(
       response => {
         dispatch(addMessagesSuccess(response));
       },
-      error => {
+      () => {
         dispatch(failure('Server error.'));
       },
     );
@@ -44,13 +44,13 @@ export function addMessages(start: number) {
 }
 
 export function readMessage(messageId: string) {
-  return dispatch => {
+  return (dispatch: (arg0: MessagesActionTypes | FetchActionTypes) => void) => {
     dispatch(request());
     return messagesService.readMessage(messageId).then(
       response => {
         dispatch(readMessageSuccess(response));
       },
-      error => {
+      () => {
         dispatch(failure('Server error.'));
       },
     );
