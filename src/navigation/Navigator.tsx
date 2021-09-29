@@ -10,8 +10,16 @@ const RootNavigator: React.FC = () => {
 
   return (
     <Navigator initialRouteName="Home">
-      <Screen name="Home" component={HomeScreen} />
-      <Screen name="Message" component={MessageScreen} />
+      <Screen
+        name="Home"
+        component={HomeScreen}
+        options={{headerTitle: 'Mensagens'}}
+      />
+      <Screen
+        name="Message"
+        component={MessageScreen}
+        options={{headerTitle: 'Detalhes'}}
+      />
     </Navigator>
   );
 };

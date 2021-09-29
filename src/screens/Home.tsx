@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -14,16 +14,21 @@ export interface HomeScreenProps {
 export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
   const {messages} = useSelector((state: RootState) => state.messages);
+  const [start, setStart] = useState<number>(0);
 
-  const updateMessages = (start: number) => {
+  const updateMessages = () => {
     dispatch(addMessages(start));
   };
 
-  useEffect(() => {
-    if (messages.length === 0) {
-      updateMessages(0);
+  const nextPage = () => {
+    if (start < 4) {
+      setStart(start + 1);
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    updateMessages();
+  }, [start]);
 
   return (
     <FlatList
@@ -32,6 +37,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
       renderItem={({item}) => (
         <MessageItem message={item} navigation={navigation} />
       )}
+      onEndReached={nextPage}
+      onEndReachedThreshold={0.7}
     />
   );
 };
