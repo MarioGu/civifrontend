@@ -5,17 +5,17 @@ export interface MessageInterface {
   detail: string;
 }
 
-export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const MARK_MESSAGE_READ = 'MARK_MESSAGE_READ';
+export const ADD_MESSAGES = 'ADD_MESSAGES';
+export const READ_MESSAGE = 'READ_MESSAGE';
 
 interface AddMessageAction {
-  type: typeof ADD_MESSAGE;
+  type: typeof ADD_MESSAGES;
+  payload: MessageInterface[];
+}
+
+interface ReadMessageAction {
+  type: typeof READ_MESSAGE;
   payload: MessageInterface;
 }
 
-interface MarkMessageReadAction {
-  type: typeof MARK_MESSAGE_READ;
-  payload: MessageInterface;
-}
-
-export type MessagesActionTypes = AddMessageAction | MarkMessageReadAction;
+export type MessagesActionTypes = AddMessageAction | ReadMessageAction;

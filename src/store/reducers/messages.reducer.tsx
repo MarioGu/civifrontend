@@ -1,8 +1,8 @@
 import {
   MessageInterface,
   MessagesActionTypes,
-  ADD_MESSAGE,
-  MARK_MESSAGE_READ,
+  ADD_MESSAGES,
+  READ_MESSAGE,
 } from '../types';
 
 interface MessagesState {
@@ -18,23 +18,18 @@ export function messagesReducer(
   action: MessagesActionTypes,
 ): MessagesState {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ADD_MESSAGES:
       return {
         ...state,
-        messages: [...state.messages, action.payload],
+        messages: [...state.messages, ...action.payload],
       };
 
-    case MARK_MESSAGE_READ:
+    case READ_MESSAGE:
       return {
         ...state,
-        messages: state.messages.map(item =>
-          item.id === action.payload.id
-            ? {
-                ...item,
-                read: true,
-              }
-            : item,
-        ),
+        messages: state.messages.map(item => {
+          return item.id === action.payload.id ? {...item, read: true} : item;
+        }),
       };
 
     default:
