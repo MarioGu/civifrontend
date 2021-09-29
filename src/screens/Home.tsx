@@ -15,13 +15,14 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
   const {messages} = useSelector((state: RootState) => state.messages);
   const [start, setStart] = useState<number>(0);
+  const [refreshing] = useState<boolean>(false);
 
   const updateMessages = () => {
     dispatch(addMessages(start));
   };
 
   const nextPage = () => {
-    if (start < 4) {
+    if (start < 2) {
       setStart(start + 1);
     }
   };
@@ -37,8 +38,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
       renderItem={({item}) => (
         <MessageItem message={item} navigation={navigation} />
       )}
-      onEndReached={nextPage}
-      onEndReachedThreshold={0.7}
+      onRefresh={nextPage}
+      refreshing={refreshing}
     />
   );
 };
