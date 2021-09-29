@@ -3,6 +3,7 @@ export interface MessageInterface {
   timestamp: number;
   subject: string;
   detail: string;
+  read: boolean;
 }
 
 export const ADD_MESSAGES = 'ADD_MESSAGES';
