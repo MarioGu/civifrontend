@@ -16,7 +16,7 @@ interface AddMessageAction {
 
 interface ReadMessageAction {
   type: typeof READ_MESSAGE;
-  payload: MessageInterface;
+  payload: number;
 }
 
 export type MessagesActionTypes = AddMessageAction | ReadMessageAction;

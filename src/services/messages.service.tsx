@@ -7,9 +7,13 @@ export const messagesService = {
 };
 
 async function addMessages(start: number): Promise<MessageInterface[]> {
-  return await postToServer('/messages', JSON.stringify({start: start}));
+  const messages = await postToServer(
+    '/messages',
+    JSON.stringify({start: start}),
+  );
+  return messages.reverse();
 }
 
-async function readMessage(messageId: string): Promise<MessageInterface[]> {
-  return [];
+async function readMessage(messageId: number): Promise<number> {
+  return messageId;
 }

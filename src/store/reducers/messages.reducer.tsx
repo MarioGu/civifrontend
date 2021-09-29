@@ -21,14 +21,14 @@ export function messagesReducer(
     case ADD_MESSAGES:
       return {
         ...state,
-        messages: [...state.messages, ...action.payload],
+        messages: [...action.payload, ...state.messages],
       };
 
     case READ_MESSAGE:
       return {
         ...state,
         messages: state.messages.map(item => {
-          return item.id === action.payload.id ? {...item, read: true} : item;
+          return item.id === action.payload ? {...item, read: true} : item;
         }),
       };
 

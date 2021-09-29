@@ -1,4 +1,10 @@
+import {MessageInterface} from '../store';
+
+export type MessageParamList = {
+  message: MessageInterface;
+};
+
 export type RootNavigatorParamsList = {
   Home: undefined;
-  Message: undefined;
+  Message: MessageParamList;
 };

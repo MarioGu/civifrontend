@@ -18,7 +18,9 @@ export const MessageItem: React.FC<MessageItemInterface> = ({
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={() => {
-        navigation.navigate('Message');
+        navigation.navigate('Message', {
+          message: message,
+        });
       }}>
       <View style={styles.container}>
         <View style={[styles.avatar, !message.read && styles.avatarRead]}>

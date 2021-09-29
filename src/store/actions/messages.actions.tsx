@@ -16,9 +16,9 @@ const addMessagesSuccess: ActionCreator<MessagesActionTypes> = (
 };
 
 const readMessageSuccess: ActionCreator<MessagesActionTypes> = (
-  message: MessageInterface,
+  messageId: number,
 ) => {
-  return {type: READ_MESSAGE, payload: message};
+  return {type: READ_MESSAGE, payload: messageId};
 };
 
 export const request: ActionCreator<FetchActionTypes> = () => {
@@ -43,7 +43,7 @@ export function addMessages(start: number) {
   };
 }
 
-export function readMessage(messageId: string) {
+export function readMessage(messageId: number) {
   return (dispatch: (arg0: MessagesActionTypes | FetchActionTypes) => void) => {
     dispatch(request());
     return messagesService.readMessage(messageId).then(
