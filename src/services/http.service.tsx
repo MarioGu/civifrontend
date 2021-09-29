@@ -14,7 +14,6 @@ export async function postToServer(path: string, body: string) {
         body: body,
       },
     );
-    console.log(response);
     if (!response.ok) {
       return Promise.reject(response);
     } else {
@@ -26,7 +25,6 @@ export async function postToServer(path: string, body: string) {
       }
     }
   } catch (error) {
-    console.log(error);
     return Promise.reject(error);
   }
   return responseData;

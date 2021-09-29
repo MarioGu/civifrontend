@@ -1,17 +1,18 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
-import {Home} from './src/containers';
+import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from './src/store';
+import RootNavigator from './src/navigation/Navigator';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App: React.FC = () => {
   return (
-    <Provider store={store}>
-      <StatusBar hidden />
-      <SafeAreaView>
-        <Home />
-      </SafeAreaView>
-    </Provider>
+    <NavigationContainer>
+      <Provider store={store}>
+        <StatusBar />
+        <RootNavigator />
+      </Provider>
+    </NavigationContainer>
   );
 };
 
